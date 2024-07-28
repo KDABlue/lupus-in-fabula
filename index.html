@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupus in Fabula Game Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        #player-inputs, #actions, #player-status, #reset-buttons {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .player-name {
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .player-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .dead-player {
+            color: red;
+            font-weight: bold;
+        }
+        #actions, #player-status, #reset-buttons {
+            display: none;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lupus in Fabula Game Manager</h1>
+    <div id="player-form">
+        <label for="num-players">Enter the number of players:</label>
+        <input type="number" id="num-players" min="1" required>
+        <button onclick="generatePlayerInputs()">Submit</button>
+    </div>
+    <div id="player-inputs">
+        <form id="players-form"></form>
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <div id="actions">
+        <h2>Actions</h2>
+        <p>Action to take: <span id="current-action"></span></p>
+        <div id="action-inputs">
+            <label for="wolves-victim">Wolves' victim: </label>
+            <input type="text" id="wolves-victim">
+            <label for="villagers-victim">Villagers' victim: </label>
+            <input type="text" id="villagers-victim">
+            <label for="prostitute-block">Prostitute's block: </label>
+            <input type="text" id="prostitute-block">
+        </div>
+        <button onclick="nextAction()">Next Action</button>
+    </div>
+    <div id="player-status">
+        <h2>Player Status</h2>
+        <div id="players-status-list"></div>
+    </div>
+    <div id="reset-buttons">
+        <button onclick="resetCurrentGame()">Reset Current Game</button>
+        <button onclick="resetAll()">Reset All</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
